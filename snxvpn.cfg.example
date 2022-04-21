@@ -1,0 +1,16 @@
+SNX_USER=jdoe
+SNX_HOST=portal.netsecurtyteam.example.com
+
+# Create SNX password from TOKEN+PIN:
+# I like storing the PIN code in gopass. Alternatively you can just pust it in cleartext here.
+PIN="$(gopass show --password perso/path/to/snxvpn/pin )"
+#PIN=1234
+
+if [ -n "$1" ] ;then
+  TOKEN="$1"
+else
+  echo -n "TOKEN ? "
+  read TOKEN
+fi
+
+SNX_PASSWORD="${TOKEN}${PIN}"
